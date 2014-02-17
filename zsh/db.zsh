@@ -75,6 +75,13 @@ unsetopt ALL_EXPORT
 
 alias man='LC_ALL=C LANG=C man'
 alias ll='ls -al'
+alias gs='git status'
+alias gb='git branch'
+alias gbr='git branch -r'
+alias gc='git commit -a -m '
+alias gp='git pull'
+
+
 #alias ls='ls --color=auto '
 #
 #if [[ $HOSTNAME == "kamna" ]] {
