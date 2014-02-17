@@ -1,0 +1,4 @@
+/ssh:fh@192.168.28.72:/home/fh/fh-dynofarm/fh-proxy/testlib/proxycluster.json
+#_assh_bfh@192.168.28.72_b_ahome_afh_afh-dynofarm_afh-proxy_atestlib_aproxycluster.json#
+/ssh:fh@192.168.28.70:/home/fh/fh-dynofarm/fh-proxy/testlib/proxycluster.json
+#_assh_bfh@192.168.28.70_b_ahome_afh_afh-dynofarm_afh-proxy_atestlib_aproxycluster.json#
