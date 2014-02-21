@@ -1,0 +1,125 @@
+#!/bin/bash
+
+#
+# To install, save it somewhere in your path (e.g. ~/bin) as 'git-fh' & chmod +x it
+#
+
+set -e
+
+usage() {
+	echo "Usage: git fh start <branch-name> -- start a branch"
+	echo "       git fh finish <tag>        -- finish the current branch (merge into master, tag, etc)"
+        echo "       git fh log                 -- git log with FeedHenry GitHub urls to commits"
+}
+
+# get the current branch
+git_current_branch() {
+	git branch --no-color | grep '^\* ' | grep -v 'no branch' | sed 's/^* //g'
+}
+
+## start a branch 
+do_start()
+{
+  if [[ -z "$branch" ]]; then 
+    echo "Error: no branch name specified"
+    usage
+    exit 1
+  fi
+
+  br=$(git_current_branch)
+  if [ "$br" != "master" ]; then
+    echo "You're not on the master branch, checkout master first.."
+    exit 1
+  fi
+
+  cmds=(
+    "git pull origin master"
+    "git checkout -b $branch master"
+    "git push --set-upstream origin $branch"
+  )
+
+  echo "**REVIEW** what you are about to do: "
+  for cmd in "${cmds[@]}"; do
+    echo "$cmd"
+  done;
+
+  while true; do
+    read -p "Continue? [y/n]: " yn
+    case $yn in
+        [Yy]* ) for cmd in "${cmds[@]}"; do echo "** $cmd: "; $cmd; done; break;;
+        [Nn]* ) exit;;
+        * ) echo "Please answer y or n.";;
+    esac
+  done
+}
+
+## finish a branch
+do_finish()
+{
+  if [[ -z "$tag" ]]; then 
+    echo "Error: no tag specified"
+    usage
+    exit 1
+  fi
+
+  br=$(git_current_branch)
+  if [ "$br" == "master" ]; then
+    echo "You're on the master branch, run 'fh finish' from the branch you want to finish."
+    exit 1
+  fi
+
+  cmds=(
+    "git checkout master"
+		"git merge $br"
+		"git tag $tag"
+		"git branch -d $br"
+		"git push origin :${br}"
+		"git push"
+		"git push --tags"
+  )
+
+  echo "**REVIEW** what you are about to do: "
+  for cmd in "${cmds[@]}"; do
+    echo "$cmd"
+  done;
+
+  while true; do
+    read -p "Continue? [y/n]: " yn
+    case $yn in
+        [Yy]* ) for cmd in "${cmds[@]}"; do echo "** $cmd: "; $cmd; done; break;;
+        [Nn]* ) exit;;
+        * ) echo "Please answer y or n.";;
+    esac
+  done
+}
+
+# custom log command, hits the FH Eng repo
+do_log() 
+{
+  repo=$(basename $PWD)
+  git log --pretty=format:"https://github.com/fheng/${repo}/commit/%H %s%n"
+}
+
+# main
+main() {
+  if [ $# -lt 1 ]; then
+		usage
+		exit 1
+	fi
+  cmd=$1
+
+  case "$cmd" in
+	  "start" )
+		  branch=$2;
+		  do_start ;;
+	  "log" )
+		  do_log ;;
+	  "finish" )
+		  tag=$2;
+		  do_finish ;;
+	  * )
+    usage ;;
+  esac
+}
+
+main "$@"
