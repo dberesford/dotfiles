@@ -35,6 +35,8 @@
    "Major mode for editing Markdown files" t)
 (setq auto-mode-alist
    (cons '("\\.txt" . markdown-mode) auto-mode-alist))
+(setq auto-mode-alist
+   (cons '("\\.md" . markdown-mode) auto-mode-alist))
 
 ;; turn off tool bar
 (tool-bar-mode -1)
@@ -178,7 +180,8 @@
 (require 'nav)
 (nav-disable-overeager-window-splitting)
 ;; Optional: set up a quick key to toggle nav
-(global-set-key [f8] 'nav-toggle)
+;;(global-set-key [\C-f] 'nav-toggle)
+(global-set-key "\C-c\ \C-f" 'nav-toggle)
 
 (defun beautify-json ()
   (interactive)
@@ -207,3 +210,24 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+(require 'package)
+(add-to-list 'package-archives
+             '("melpa" . "http://melpa.milkbox.net/packages/") t)
+
+(setq-default ispell-program-name "/usr/local/bin/aspell")
+
+;; easy spell check
+(global-set-key (kbd "C-c C-s") 'ispell-work)
+;;(global-set-key (kbd "C-S-<f8>") 'flyspell-mode)
+;;(global-set-key (kbd "C-M-<f8>") 'flyspell-buffer)
+;;(global-set-key (kbd "C-<f8>") 'flyspell-check-previous-highlighted-word)
+(defun flyspell-check-next-highlighted-word ()
+  "Custom function to spell check next highlighted word"
+  (interactive)
+  (flyspell-goto-next-error)
+  (ispell-word)
+  )
+(global-set-key (kbd "C-c C-n") 'flyspell-check-next-highlighted-word)
+
+

@@ -1,0 +1,57 @@
+fhc target
+which fhc
+exit
+ls 
+/usr/local/bin/fhc 
+node
+git
+which 
+which git
+ls -l
+find-file services.js 
+cat ./services.js 
+man ls
+git diff
+/usr/local/bin/node
+addpath /usr/local/bin
+fhc
+fhc services
+fhc services list
+fhc services list
+
+fhc services list
+fhc services list
+fhc services list
+fhc services list
+fhc services list
+fhc services list --json
+fhc target
+fhc apps
+fhc services list --json --loglevel=silly
+fhc services
+fhc services list
+fhc services list --json --loglevel=silly
+fhc services list --json --loglevel=silly
+fhc services list
+fhc services delete fAltlClnn0acC_zIApLHfybS
+fhc services list
+fhc services create doo
+fhc project create poo
+fhc projects
+fhc project list]
+fhc project list
+fhc project delete GzXuSoCuxnzREZ-EIbuOOuF
+fhc project delete GzXuSoCuxnzREZ-EIbuOOuFV
+fhc project list
+fhc project delete  SaFDDKVtUOLAfgxJoASy1Ncb 
+fhc project list
+fhc project delete  ECvuTYVrpm06bhkIdybhuZZO
+fhc project list
+fhc apps
+fhc apps ECvuTYVrpm06bhkIdybhuZZO
+fhc apps Ibn9oULIY0bJG7G4Cfh0rO9z
+fhc apps Ibn9oULIY0bJG7G4Cfh0rO9z
+fhc apps Ibn9oULIY0bJG7G4Cfh0rO9z
+fhc apps Ibn9oULIY0bJG7G4Cfh0rO9z
+fhc set json false
+fhc apps Ibn9oULIY0bJG7G4Cfh0rO9z
