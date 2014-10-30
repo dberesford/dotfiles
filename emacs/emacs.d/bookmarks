@@ -1,0 +1,10 @@
+;;;; Emacs Bookmark Format Version 1 ;;;;
+;;; This format is meant to be slightly human-readable;
+;;; nevertheless, you probably don't want to edit it.
+;;; -*- End Of Bookmark File Format Version Stamp -*-
+(("work.org"
+ (filename . "~/Dropbox/work.org")
+ (front-context-string . "*** #7331 - fhca")
+ (rear-context-string . "stead of stdout\n")
+ (position . 54678))
+)

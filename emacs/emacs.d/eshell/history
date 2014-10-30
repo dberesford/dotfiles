@@ -55,3 +55,15 @@ fhc apps Ibn9oULIY0bJG7G4Cfh0rO9z
 fhc apps Ibn9oULIY0bJG7G4Cfh0rO9z
 fhc set json false
 fhc apps Ibn9oULIY0bJG7G4Cfh0rO9z
+ls -l
+cat test/basic.js 
+pushd ~/tmp
+cd npmtest/
+ls -l
+cd 
+cd work
+cd fh-npm/
+./node_modules/.bin/turbo test/basic.js 
+env NODE_PATH=. ./node_modules/.bin/turbo test/basic.js 
+ls -l
+mkdir test/fixtures
